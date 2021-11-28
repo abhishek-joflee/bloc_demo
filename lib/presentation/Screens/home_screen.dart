@@ -3,7 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../constants/enums.dart';
 import '../../logic/cubit/counter_cubit.dart';
+import '../../logic/cubit/internet_cubit.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -33,7 +35,18 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('You have pushed the button this many times:'),
+            BlocBuilder<InternetCubit, InternetState>(
+                builder: (context, state) {
+              if (state is InternetConnected &&
+                  state.connectionType == ConnectionType.wifi) {
+                return const Text("Wi-fi");
+              } else if (state is InternetConnected &&
+                  state.connectionType == ConnectionType.mobile) {
+                return const Text("Mobile");
+              } else {
+                return const Text("Disconnected");
+              }
+            }),
             BlocConsumer<CounterCubit, CounterState>(
               listener: (_, state) {
                 ScaffoldMessenger.of(context).hideCurrentSnackBar();
