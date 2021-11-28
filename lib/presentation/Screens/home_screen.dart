@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
               }
             }),
             BlocConsumer<CounterCubit, CounterState>(
-              listener: (_, state) {
+              listener: (context, state) {
                 ScaffoldMessenger.of(context).hideCurrentSnackBar();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 );
               },
-              builder: (_, state) {
+              builder: (context, state) {
                 return Text(
                   state.counterValue.toString(),
                   style: Theme.of(context).textTheme.headline4,
