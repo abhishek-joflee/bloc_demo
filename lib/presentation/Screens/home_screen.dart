@@ -66,27 +66,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                FloatingActionButton(
-                  heroTag: 'decrement',
-                  onPressed: () {
-                    BlocProvider.of<CounterCubit>(context).decrement();
-                  },
-                  tooltip: "Decrement",
-                  child: const Icon(Icons.remove),
-                ),
-                FloatingActionButton(
-                  heroTag: 'increment',
-                  onPressed: () {
-                    BlocProvider.of<CounterCubit>(context).increment();
-                  },
-                  tooltip: "Increment",
-                  child: const Icon(Icons.add),
-                ),
-              ],
-            ),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pushNamed('/second');
