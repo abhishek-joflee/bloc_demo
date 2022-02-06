@@ -16,13 +16,11 @@ void main() {
 class MyApp extends StatelessWidget {
   final AppRouter appRouter;
   final Connectivity connectivity;
-  MyApp({
+  const MyApp({
     Key? key,
     required this.appRouter,
     required this.connectivity,
   }) : super(key: key);
-
-  final AppRouter _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +40,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        onGenerateRoute: _appRouter.onGeneratedRoute,
+        onGenerateRoute: appRouter.onGeneratedRoute,
       ),
     );
   }

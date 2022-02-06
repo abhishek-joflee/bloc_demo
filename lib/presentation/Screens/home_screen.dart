@@ -7,7 +7,7 @@ import '../../constants/enums.dart';
 import '../../logic/cubit/counter_cubit.dart';
 import '../../logic/cubit/internet_cubit.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({
     Key? key,
     required this.title,
@@ -18,18 +18,13 @@ class HomeScreen extends StatefulWidget {
   final Color color;
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor:
           Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
       appBar: AppBar(
-        title: Text(widget.title),
-        backgroundColor: widget.color,
+        title: Text(title),
+        backgroundColor: color,
       ),
       body: Center(
         child: Column(
@@ -49,15 +44,16 @@ class _HomeScreenState extends State<HomeScreen> {
             }),
             BlocConsumer<CounterCubit, CounterState>(
               listener: (context, state) {
-                ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: state.wasIncremented
-                        ? const Text("Incremented")
-                        : const Text("Decremented"),
-                    duration: const Duration(milliseconds: 300),
-                  ),
-                );
+                ScaffoldMessenger.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(
+                    SnackBar(
+                      content: state.wasIncremented
+                          ? const Text("Incremented")
+                          : const Text("Decremented"),
+                      duration: const Duration(milliseconds: 300),
+                    ),
+                  );
               },
               builder: (context, state) {
                 return Text(
