@@ -36,7 +36,7 @@
                 you can send event when user stop typing OR
                 you can send event when 4 letters are typed... etc
 
-       = bloc is the best for this ex 2.
+       = bloc is the best for this case.
 
 ## Flutter Bloc Concepts
 
