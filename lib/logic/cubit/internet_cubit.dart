@@ -11,6 +11,7 @@ part 'internet_state.dart';
 class InternetCubit extends Cubit<InternetState> {
   final Connectivity connectivity;
   late StreamSubscription<ConnectivityResult> connectivityStream;
+
   InternetCubit({
     required this.connectivity,
   }) : super(InternetLoading()) {

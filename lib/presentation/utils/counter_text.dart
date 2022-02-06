@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CounterText extends StatelessWidget {
-  CounterText({Key? key}) : super(key: key);
+  const CounterText({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Text(
